@@ -4,6 +4,7 @@ import useRoutes from "./routes";
 import {BrowserRouter} from "react-router-dom";
 import {useAuth} from "./hooks/auth.hook";
 import {AuthContext} from "./context/AuthContext";
+import MenuAppBar from "./components/MenuAppBar";
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
         }
         }>
             <BrowserRouter>
+                <MenuAppBar/>
                 {routes}
                 <Copyright/>
             </BrowserRouter>

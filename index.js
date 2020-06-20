@@ -7,7 +7,7 @@ const bodyParser = require('body-parser')
 const cors = require("cors")
 const logger = require("morgan")
 const authRouter = require('./routes/authRouter')
-const jogRouter = require('./routes/authRouter')
+const jogRouter = require('./routes/jogRouter')
 
 configurePassport(passport)
 const app = express()
@@ -22,7 +22,7 @@ app.use(passport.initialize());
 app.use(logger('dev'));
 app.use(cors());
 app.use('/v1/auth/', authRouter)
-app.use('/v1/data/jog', jogRouter)
+app.use('/v1/data/jog/', jogRouter)
 
 async function start() {
     try {

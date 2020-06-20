@@ -7,22 +7,27 @@ const config = require('config')
 
 authRouter.post('/login', async (req, res) => {
 
-    await passport.authenticate("local", function (err, user, message) {
-        if (user === false) {
-            return res.status(400).json({message: "Такого пользователя не существует("})
-        } else {
-            const payload = {
-                id: user._id,
-                firstName: user.firstName,
-                role: user.role,
-                email: user.email
+    try {
+        await passport.authenticate("local", function (err, user, message) {
+            if (user === false) {
+                return res.status(400).json({message: "Такого пользователя не существует("})
+            } else {
+                const payload = {
+                    id: user._id,
+                    firstName: user.firstName,
+                    role: user.role,
+                    email: user.email
+                }
+                const token = jwt.sign(payload, config.get('secret'), {
+                    expiresIn: "7d"
+                })
+                return res.status(200).json({userInfo: payload, token, message})
             }
-            const token = jwt.sign(payload, config.get('secret'), {
-                expiresIn: "7d"
-            })
-            return res.status(200).json({userInfo: payload, token, message})
-        }
-    })(req)
+        })(req)
+    } catch (e) {
+        return res.status(500).json({message: "Something wrong "})
+    }
+
     // const {email, password} = req.body
     // console.log(req.user)
     // await User.findOne({email}).then(user => {
