@@ -12,20 +12,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import JogDialogDelete from "./JogDialogDelete";
 import useHttp from "../hooks/http.hook";
 import {AuthContext} from "../context/AuthContext";
-
-function getFormatedDate(jogDate) {
-    const date = new Date(jogDate)
-    let dd = date.getDate();
-    let mm = date.getMonth() + 1;
-
-    if (dd < 10) {
-        dd = '0' + dd;
-    }
-    if (mm < 10) {
-        mm = '0' + mm;
-    }
-    return dd + '.' + mm + '.' + date.getFullYear();
-}
+import {formatDate} from "../services/service";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -34,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
     details: {
         display: 'flex',
         flexDirection: 'column',
+        width: '200px'
     },
     content: {
         flex: '1 0 auto',
@@ -45,14 +33,11 @@ const useStyles = makeStyles((theme) => ({
         width: 120,
         height: 120,
         display: 'flex',
-        marginTop: '10px'
+        marginTop: '10px',
     },
     editButton: {
         marginBottom: '80px'
     },
-    qwe: {
-        display: "block"
-    }
 }));
 
 export default function JogCard({jog}) {
@@ -95,7 +80,7 @@ export default function JogCard({jog}) {
             <div className={classes.details}>
                 <CardContent className={classes.content}>
                     <Typography variant="subtitle2" color="textSecondary">
-                        {getFormatedDate(jog.date)}
+                        {formatDate(jog.date)}
                     </Typography>
                     <Typography variant='subtitle1'>
                         Speed: {<Typography

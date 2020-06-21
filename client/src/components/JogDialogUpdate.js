@@ -7,20 +7,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import {AuthContext} from "../context/AuthContext";
 import useHttp from "../hooks/http.hook";
-
-function formatDate(date) {
-    let d = new Date(date),
-        month = '' + (d.getMonth() + 1),
-        day = '' + d.getDate(),
-        year = d.getFullYear();
-
-    if (month.length < 2)
-        month = '0' + month;
-    if (day.length < 2)
-        day = '0' + day;
-
-    return [year, month, day].join('-');
-}
+import {formatDate} from "../services/service";
 
 export default function JogDialogUpdate({open, jog, handleClose}) {
 
