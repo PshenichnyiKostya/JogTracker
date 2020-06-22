@@ -32,7 +32,8 @@ async function start() {
             useCreateIndex: true,
             useFindAndModify: false
         })
-        app.listen(5000, () => console.log('Server start'))
+        app.listen(process.env.PORT || 5000),() => console.log('Server start')
+
     } catch (e) {
         console.error(e.message)
         process.exit(1)
