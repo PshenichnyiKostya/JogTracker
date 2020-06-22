@@ -65,7 +65,7 @@ export default function JogCard({jog}) {
 
     const handleDeleteJog = async () => {
         try {
-            await request(`/v1/data/jog`, 'DELETE', {jogId: jog._id}, {
+            await request(`http://localhost:5000/v1/data/jog`, 'DELETE', {jogId: jog._id}, {
                 Authorization: `JWT ${auth.token}`
             })
             setOpenDialogDelete(false)

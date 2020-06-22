@@ -35,7 +35,7 @@ export default function JogDialogAdd({open, handleCloseAfterAdding,handleClose})
     }
     const handleSave = async () => {
         try {
-            const data = await request(`/v1/data/jog`, 'POST', {date, distance, time}, {
+            const data = await request(`http://localhost:5000/v1/data/jog`, 'POST', {date, distance, time}, {
                 Authorization: `JWT ${auth.token}`
             })
             handleCloseAfterAdding(data.jog)
