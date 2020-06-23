@@ -13,11 +13,11 @@ const jogRouter = require('./routes/jogRouter')
 configurePassport(passport)
 const app = express()
 
-app.use(function (req, res, next) {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-    next();
-});
+// app.use(function (req, res, next) {
+//     res.header('Access-Control-Allow-Origin', '*');
+//     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+//     next();
+// });
 app.use(bodyParser.json());
 app.use(passport.initialize());
 // app.use(logger('dev'));
@@ -27,7 +27,7 @@ app.use('/v1/data/jog/', jogRouter)
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static('client/build'))
-    app.get('/jogs', (req, res) => {
+    app.get('*', (req, res) => {
         req.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
     })
 }
