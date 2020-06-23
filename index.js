@@ -20,6 +20,8 @@ app.use(function (req, res, next) {
 });
 app.use(bodyParser.json());
 app.use(passport.initialize());
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
 // app.use(logger('dev'));
 app.use(cors());
 app.use('/v1/auth/', authRouter)
