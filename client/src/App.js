@@ -17,7 +17,7 @@ function App() {
         }
         }>
             <BrowserRouter>
-                <MenuAppBar/>
+                {userId && <MenuAppBar/>}
                 {routes}
                 <Copyright/>
             </BrowserRouter>
