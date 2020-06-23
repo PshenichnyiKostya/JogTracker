@@ -69,7 +69,7 @@ export default function JogCard({jog}) {
                 Authorization: `JWT ${auth.token}`
             })
             setOpenDialogDelete(false)
-            window.location.reload(false)
+            // window.location.reload(false)
         } catch (e) {
             return e.message
         }

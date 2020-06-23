@@ -25,7 +25,7 @@ export default function JogDialogUpdate({open, jog, handleClose}) {
             await request(`/v1/data/jog`, 'PUT', {date, distance, time, jogId: jog._id}, {
                 Authorization: `JWT ${auth.token}`
             })
-            window.location.reload(false)
+            // window.location.reload(false)
         } catch (e) {
             return e.message
         }

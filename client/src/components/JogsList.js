@@ -71,7 +71,6 @@ export default function JogsList() {
                 const data = await request(`/v1/data/jog`, 'GET', null, {
                     Authorization: `JWT ${auth.token}`
                 })
-                console.log(data.jogs.filter(value => value.date >= dateFrom && value.date <= dateTo))
                 return data.jogs.filter(value => value.date >= dateFrom && value.date <= dateTo)
             } catch (e) {
                 return e.message
