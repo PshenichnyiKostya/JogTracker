@@ -27,7 +27,7 @@ app.use('/v1/data/jog/', jogRouter)
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static('client/build'))
-    app.get('*', (req, res) => {
+    app.get('/', (req, res) => {
         req.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
     })
 }
