@@ -68,7 +68,7 @@ export default function JogsList() {
     useEffect(() => {
         const func = async () => {
             try {
-                const data = await request(`http://localhost:${process.env.PORT || 5000}/v1/data/jog`, 'GET', null, {
+                const data = await request(`/v1/data/jog`, 'GET', null, {
                     Authorization: `JWT ${auth.token}`
                 })
                 console.log(data.jogs.filter(value => value.date >= dateFrom && value.date <= dateTo))

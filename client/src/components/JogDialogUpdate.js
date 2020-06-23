@@ -22,7 +22,7 @@ export default function JogDialogUpdate({open, jog, handleClose}) {
     }
     const handleSave = async () => {
         try {
-            await request(`http://localhost:${process.env.PORT || 5000}/v1/data/jog`, 'PUT', {date, distance, time, jogId: jog._id}, {
+            await request(`/v1/data/jog`, 'PUT', {date, distance, time, jogId: jog._id}, {
                 Authorization: `JWT ${auth.token}`
             })
             window.location.reload(false)

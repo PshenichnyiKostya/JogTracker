@@ -25,12 +25,12 @@ app.use(cors());
 app.use('/v1/auth/', authRouter)
 app.use('/v1/data/jog/', jogRouter)
 
-// if (process.env.NODE_ENV === 'production') {
-//     app.use(express.static('client/build'))
-//     app.get('*', (req, res) => {
-//         req.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
-//     })
-// }
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static('client/build'))
+    app.get('*', (req, res) => {
+        req.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+    })
+}
 
 async function start() {
     try {
